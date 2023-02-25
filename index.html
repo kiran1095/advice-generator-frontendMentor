@@ -38,6 +38,9 @@
 </body>
 <script>
   $(document).ready(function() {
+    getAdvice();
+  });
+  function getAdvice() {
     $.ajax({
       url: "https://api.adviceslip.com/advice",
       dataType: "json", 
@@ -45,7 +48,13 @@
           var data = result['slip'];
           $('.advice_id').html(data['id']);
           $('.advice').html(data['advice']);
-          }});
-  });
+      }
+    });
+    $(".dice_block").click(function() {
+      $('.advice_id').html("");
+      $('.advice').html("");
+      getAdvice();
+    });
+  }
 </script>
 </html>
